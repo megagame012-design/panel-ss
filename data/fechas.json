@@ -1,0 +1,641 @@
+[
+{
+"clave": "2026-11-07·Convivencia de la cuadrilla·Santo Descendimiento",
+"fecha": "2026-11-07",
+"titulo": "Convivencia de la cuadrilla",
+"tipo": "Ensayo",
+"detalle": "Santo Descendimiento",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2026-11-22·Besapiés al Cristo de la Luz·Convento del Carmen",
+"fecha": "2026-11-22",
+"titulo": "Besapiés al Cristo de la Luz",
+"tipo": "Culto",
+"detalle": "Convento del Carmen",
+"idea": "Aviso del besapiés con hora y lugar",
+"antelacion": 2
+},
+{
+"clave": "2026-11-22·Solemnidad de Cristo Rey·Palmas y Carmen",
+"fecha": "2026-11-22",
+"titulo": "Solemnidad de Cristo Rey",
+"tipo": "Festividad",
+"detalle": "Palmas y Carmen",
+"idea": "Felicitación con la foto de portada del día",
+"antelacion": 0
+},
+{
+"clave": "2026-11-27·Reunión·Oración en el Huerto de los Olivos · 21:00 h",
+"fecha": "2026-11-27",
+"titulo": "Reunión",
+"tipo": "Ensayo",
+"detalle": "Oración en el Huerto de los Olivos · 21:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2026-11-27·Virgen de la Medalla Milagrosa·",
+"fecha": "2026-11-27",
+"titulo": "Virgen de la Medalla Milagrosa",
+"tipo": "Festividad",
+"detalle": "",
+"idea": "Felicitación con el retablo de la Milagrosa",
+"antelacion": 0
+},
+{
+"clave": "2026-12-01·Portada de la Esperanza·Cambia la portada de Hoy",
+"fecha": "2026-12-01",
+"titulo": "Portada de la Esperanza",
+"tipo": "Web",
+"detalle": "Cambia la portada de Hoy",
+"idea": "Historia avisando del cambio de portada",
+"antelacion": 0
+},
+{
+"clave": "2026-12-08·Inmaculada Concepción·",
+"fecha": "2026-12-08",
+"titulo": "Inmaculada Concepción",
+"tipo": "Festividad",
+"detalle": "",
+"idea": "Felicitación y oración del día",
+"antelacion": 0
+},
+{
+"clave": "2026-12-12·Comida de hermandad·Nuestro Señor Jesús de las Penas · 14:00 h",
+"fecha": "2026-12-12",
+"titulo": "Comida de hermandad",
+"tipo": "Ensayo",
+"detalle": "Nuestro Señor Jesús de las Penas · 14:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2026-12-12·Igualá·Nuestro Señor Jesús de las Penas · 17:00 h",
+"fecha": "2026-12-12",
+"titulo": "Igualá",
+"tipo": "Ensayo",
+"detalle": "Nuestro Señor Jesús de las Penas · 17:00 h",
+"idea": "Recordatorio de la igualá en historias",
+"antelacion": 2
+},
+{
+"clave": "2026-12-13·Igualá·María Santísima de la Amargura · 12:00 h",
+"fecha": "2026-12-13",
+"titulo": "Igualá",
+"tipo": "Ensayo",
+"detalle": "María Santísima de la Amargura · 12:00 h",
+"idea": "Recordatorio de la igualá en historias",
+"antelacion": 2
+},
+{
+"clave": "2026-12-18·Nuestra Señora de la Esperanza·Hermandad de la Esperanza",
+"fecha": "2026-12-18",
+"titulo": "Nuestra Señora de la Esperanza",
+"tipo": "Festividad",
+"detalle": "Hermandad de la Esperanza",
+"idea": "Felicitación a la hermandad",
+"antelacion": 0
+},
+{
+"clave": "2026-12-25·Natividad del Señor·",
+"fecha": "2026-12-25",
+"titulo": "Natividad del Señor",
+"tipo": "Festividad",
+"detalle": "",
+"idea": "Felicitación de Navidad",
+"antelacion": 0
+},
+{
+"clave": "2027-01-05·Cabalgata de Reyes·",
+"fecha": "2027-01-05",
+"titulo": "Cabalgata de Reyes",
+"tipo": "Festividad",
+"detalle": "",
+"idea": "Horario y recorrido de la cabalgata",
+"antelacion": 1
+},
+{
+"clave": "2027-01-06·Día de Reyes·Epifanía del Señor",
+"fecha": "2027-01-06",
+"titulo": "Día de Reyes",
+"tipo": "Festividad",
+"detalle": "Epifanía del Señor",
+"idea": "Felicitación con la Adoración de los Magos",
+"antelacion": 0
+},
+{
+"clave": "2027-01-08·Igualá·Santo Descendimiento · 20:30 h",
+"fecha": "2027-01-08",
+"titulo": "Igualá",
+"tipo": "Ensayo",
+"detalle": "Santo Descendimiento · 20:30 h",
+"idea": "Recordatorio de la igualá en historias",
+"antelacion": 2
+},
+{
+"clave": "2027-01-17·Igualá·Nuestro Padre Jesús de la Bondad · 16:00 h",
+"fecha": "2027-01-17",
+"titulo": "Igualá",
+"tipo": "Ensayo",
+"detalle": "Nuestro Padre Jesús de la Bondad · 16:00 h",
+"idea": "Recordatorio de la igualá en historias",
+"antelacion": 2
+},
+{
+"clave": "2027-01-17·Igualá·Oración en el Huerto de los Olivos · 11:00 h",
+"fecha": "2027-01-17",
+"titulo": "Igualá",
+"tipo": "Ensayo",
+"detalle": "Oración en el Huerto de los Olivos · 11:00 h",
+"idea": "Recordatorio de la igualá en historias",
+"antelacion": 2
+},
+{
+"clave": "2027-01-17·Igualá y ensayo·El Encuentro · 11:00 h",
+"fecha": "2027-01-17",
+"titulo": "Igualá y ensayo",
+"tipo": "Ensayo",
+"detalle": "El Encuentro · 11:00 h",
+"idea": "Recordatorio de la igualá en historias",
+"antelacion": 2
+},
+{
+"clave": "2027-01-23·Igualá·Paso de Misterio de Jesús Cautivo · 16:30 h",
+"fecha": "2027-01-23",
+"titulo": "Igualá",
+"tipo": "Ensayo",
+"detalle": "Paso de Misterio de Jesús Cautivo · 16:30 h",
+"idea": "Recordatorio de la igualá en historias",
+"antelacion": 2
+},
+{
+"clave": "2027-01-29·1.º ensayo·Oración en el Huerto de los Olivos · 21:00 h",
+"fecha": "2027-01-29",
+"titulo": "1.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Oración en el Huerto de los Olivos · 21:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-01-29·Igualá y primer ensayo·Nuestro Padre Jesús Nazareno · 21:00 h",
+"fecha": "2027-01-29",
+"titulo": "Igualá y primer ensayo",
+"tipo": "Ensayo",
+"detalle": "Nuestro Padre Jesús Nazareno · 21:00 h",
+"idea": "Recordatorio de la igualá en historias",
+"antelacion": 2
+},
+{
+"clave": "2027-01-31·1.º ensayo·Nuestro Padre Jesús de la Bondad · 16:00 h",
+"fecha": "2027-01-31",
+"titulo": "1.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Nuestro Padre Jesús de la Bondad · 16:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-01-31·1.º ensayo·Paso de Misterio de Jesús Cautivo · 09:30 h",
+"fecha": "2027-01-31",
+"titulo": "1.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Paso de Misterio de Jesús Cautivo · 09:30 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-05·2.º ensayo·Oración en el Huerto de los Olivos · 21:00 h",
+"fecha": "2027-02-05",
+"titulo": "2.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Oración en el Huerto de los Olivos · 21:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-06·1.º ensayo·Santo Descendimiento · 16:00 h",
+"fecha": "2027-02-06",
+"titulo": "1.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Santo Descendimiento · 16:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-06·Ensayo·El Encuentro · 16:00 h",
+"fecha": "2027-02-06",
+"titulo": "Ensayo",
+"tipo": "Ensayo",
+"detalle": "El Encuentro · 16:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-07·1.º ensayo·María Santísima de la Amargura · 16:00 h",
+"fecha": "2027-02-07",
+"titulo": "1.º ensayo",
+"tipo": "Ensayo",
+"detalle": "María Santísima de la Amargura · 16:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-07·Igualá y ensayo·Nuestra Señora de la Soledad · 10:30 h",
+"fecha": "2027-02-07",
+"titulo": "Igualá y ensayo",
+"tipo": "Ensayo",
+"detalle": "Nuestra Señora de la Soledad · 10:30 h",
+"idea": "Recordatorio de la igualá en historias",
+"antelacion": 2
+},
+{
+"clave": "2027-02-10·Miércoles de Ceniza·Empieza la Cuaresma",
+"fecha": "2027-02-10",
+"titulo": "Miércoles de Ceniza",
+"tipo": "Cuaresma",
+"detalle": "Empieza la Cuaresma",
+"idea": "Arranque de Cuaresma: cuenta atrás y calendario de ensayos",
+"antelacion": 1
+},
+{
+"clave": "2027-02-12·2.º ensayo·Nuestro Padre Jesús Nazareno · 21:00 h",
+"fecha": "2027-02-12",
+"titulo": "2.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Nuestro Padre Jesús Nazareno · 21:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-13·Igualá y ensayo·María Santísima del Consuelo · 16:00 h",
+"fecha": "2027-02-13",
+"titulo": "Igualá y ensayo",
+"tipo": "Ensayo",
+"detalle": "María Santísima del Consuelo · 16:00 h",
+"idea": "Recordatorio de la igualá en historias",
+"antelacion": 2
+},
+{
+"clave": "2027-02-20·Ensayo·María Santísima del Consuelo · 16:00 h",
+"fecha": "2027-02-20",
+"titulo": "Ensayo",
+"tipo": "Ensayo",
+"detalle": "María Santísima del Consuelo · 16:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-21·1.º ensayo·Nuestra Señora de la Soledad · 10:30 h",
+"fecha": "2027-02-21",
+"titulo": "1.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Nuestra Señora de la Soledad · 10:30 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-21·2.º ensayo·Nuestro Padre Jesús de la Bondad · 16:00 h",
+"fecha": "2027-02-21",
+"titulo": "2.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Nuestro Padre Jesús de la Bondad · 16:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-21·2.º ensayo·Paso de Misterio de Jesús Cautivo · 09:30 h",
+"fecha": "2027-02-21",
+"titulo": "2.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Paso de Misterio de Jesús Cautivo · 09:30 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-26·3.º ensayo·Oración en el Huerto de los Olivos · 21:00 h",
+"fecha": "2027-02-26",
+"titulo": "3.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Oración en el Huerto de los Olivos · 21:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-27·Único ensayo·Nuestro Señor Jesús de las Penas · 16:00 h",
+"fecha": "2027-02-27",
+"titulo": "Único ensayo",
+"tipo": "Ensayo",
+"detalle": "Nuestro Señor Jesús de las Penas · 16:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-02-28·3.º ensayo·Nuestro Padre Jesús Nazareno · 10:30 h",
+"fecha": "2027-02-28",
+"titulo": "3.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Nuestro Padre Jesús Nazareno · 10:30 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-05·4.º ensayo·Oración en el Huerto de los Olivos · 21:00 h",
+"fecha": "2027-03-05",
+"titulo": "4.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Oración en el Huerto de los Olivos · 21:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-06·2.º ensayo·Santo Descendimiento · 20:30 h",
+"fecha": "2027-03-06",
+"titulo": "2.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Santo Descendimiento · 20:30 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-06·Ensayo·María Santísima del Consuelo · 16:00 h",
+"fecha": "2027-03-06",
+"titulo": "Ensayo",
+"tipo": "Ensayo",
+"detalle": "María Santísima del Consuelo · 16:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-07·2.º ensayo·María Santísima de la Amargura · 10:00 h",
+"fecha": "2027-03-07",
+"titulo": "2.º ensayo",
+"tipo": "Ensayo",
+"detalle": "María Santísima de la Amargura · 10:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-07·2.º ensayo·Nuestra Señora de la Soledad · 10:30 h",
+"fecha": "2027-03-07",
+"titulo": "2.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Nuestra Señora de la Soledad · 10:30 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-07·3.º ensayo·Nuestro Padre Jesús de la Bondad · 16:00 h",
+"fecha": "2027-03-07",
+"titulo": "3.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Nuestro Padre Jesús de la Bondad · 16:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-07·3.º ensayo·Paso de Misterio de Jesús Cautivo · 09:30 h",
+"fecha": "2027-03-07",
+"titulo": "3.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Paso de Misterio de Jesús Cautivo · 09:30 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-12·5.º ensayo·Oración en el Huerto de los Olivos · 21:00 h",
+"fecha": "2027-03-12",
+"titulo": "5.º ensayo",
+"tipo": "Ensayo",
+"detalle": "Oración en el Huerto de los Olivos · 21:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-12·Mudá·Nuestro Padre Jesús Nazareno · 22:15 h",
+"fecha": "2027-03-12",
+"titulo": "Mudá",
+"tipo": "Ensayo",
+"detalle": "Nuestro Padre Jesús Nazareno · 22:15 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-13·Traslado de la Virgen·María Santísima de la Amargura · 20:15 h",
+"fecha": "2027-03-13",
+"titulo": "Traslado de la Virgen",
+"tipo": "Ensayo",
+"detalle": "María Santísima de la Amargura · 20:15 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-14·Traslado del Señor·Nuestro Señor Jesús de las Penas · 11:00 h",
+"fecha": "2027-03-14",
+"titulo": "Traslado del Señor",
+"tipo": "Ensayo",
+"detalle": "Nuestro Señor Jesús de las Penas · 11:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-14·Domingo de Pasión·Nazareno y Dolores (Vísperas)",
+"fecha": "2027-03-14",
+"titulo": "Domingo de Pasión",
+"tipo": "Semana Santa",
+"detalle": "Nazareno y Dolores (Vísperas)",
+"idea": "Previa: horarios e itinerarios de Vísperas",
+"antelacion": 3
+},
+{
+"clave": "2027-03-17·Retranqueo·Paso de Misterio de Jesús Cautivo · 20:30 h",
+"fecha": "2027-03-17",
+"titulo": "Retranqueo",
+"tipo": "Ensayo",
+"detalle": "Paso de Misterio de Jesús Cautivo · 20:30 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-20·Mudá·María Santísima de la Amargura · 17:00 h",
+"fecha": "2027-03-20",
+"titulo": "Mudá",
+"tipo": "Ensayo",
+"detalle": "María Santísima de la Amargura · 17:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-20·Mudá·Nuestro Señor Jesús de las Penas · 11:00 h",
+"fecha": "2027-03-20",
+"titulo": "Mudá",
+"tipo": "Ensayo",
+"detalle": "Nuestro Señor Jesús de las Penas · 11:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-20·Mudá·Nuestra Señora de la Soledad · 16:00 h",
+"fecha": "2027-03-20",
+"titulo": "Mudá",
+"tipo": "Ensayo",
+"detalle": "Nuestra Señora de la Soledad · 16:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-20·Retranqueo y traslado del paso a San Pedro·Oración en el Huerto de los Olivos · 16:30 h",
+"fecha": "2027-03-20",
+"titulo": "Retranqueo y traslado del paso a San Pedro",
+"tipo": "Ensayo",
+"detalle": "Oración en el Huerto de los Olivos · 16:30 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-21·Domingo de Ramos·",
+"fecha": "2027-03-21",
+"titulo": "Domingo de Ramos",
+"tipo": "Semana Santa",
+"detalle": "",
+"idea": "Arranca la Semana Santa: itinerarios del día",
+"antelacion": 2
+},
+{
+"clave": "2027-03-22·Lunes Santo·",
+"fecha": "2027-03-22",
+"titulo": "Lunes Santo",
+"tipo": "Semana Santa",
+"detalle": "",
+"idea": "Itinerarios y horarios del día",
+"antelacion": 1
+},
+{
+"clave": "2027-03-23·Martes Santo·",
+"fecha": "2027-03-23",
+"titulo": "Martes Santo",
+"tipo": "Semana Santa",
+"detalle": "",
+"idea": "Itinerarios y horarios del día",
+"antelacion": 1
+},
+{
+"clave": "2027-03-24·Miércoles Santo·",
+"fecha": "2027-03-24",
+"titulo": "Miércoles Santo",
+"tipo": "Semana Santa",
+"detalle": "",
+"idea": "Itinerarios y horarios del día",
+"antelacion": 1
+},
+{
+"clave": "2027-03-25·Jueves Santo·",
+"fecha": "2027-03-25",
+"titulo": "Jueves Santo",
+"tipo": "Semana Santa",
+"detalle": "",
+"idea": "Itinerarios y horarios del día",
+"antelacion": 1
+},
+{
+"clave": "2027-03-26·Viernes Santo·",
+"fecha": "2027-03-26",
+"titulo": "Viernes Santo",
+"tipo": "Semana Santa",
+"detalle": "",
+"idea": "Itinerarios de la mañana y de la tarde",
+"antelacion": 1
+},
+{
+"clave": "2027-03-27·Desarmá·Nuestro Padre Jesús Nazareno · 13:15 h",
+"fecha": "2027-03-27",
+"titulo": "Desarmá",
+"tipo": "Ensayo",
+"detalle": "Nuestro Padre Jesús Nazareno · 13:15 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-03-27·Sábado Santo·",
+"fecha": "2027-03-27",
+"titulo": "Sábado Santo",
+"tipo": "Semana Santa",
+"detalle": "",
+"idea": "Itinerario de la Soledad",
+"antelacion": 1
+},
+{
+"clave": "2027-03-28·Domingo de Resurrección·",
+"fecha": "2027-03-28",
+"titulo": "Domingo de Resurrección",
+"tipo": "Semana Santa",
+"detalle": "",
+"idea": "Felicitación de Pascua y resumen de la Semana Santa",
+"antelacion": 0
+},
+{
+"clave": "2027-03-29·Desarmá·María Santísima de la Amargura",
+"fecha": "2027-03-29",
+"titulo": "Desarmá",
+"tipo": "Ensayo",
+"detalle": "María Santísima de la Amargura",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-04-03·Desarmá·Paso de Misterio de Jesús Cautivo · 11:00 h",
+"fecha": "2027-04-03",
+"titulo": "Desarmá",
+"tipo": "Ensayo",
+"detalle": "Paso de Misterio de Jesús Cautivo · 11:00 h",
+"idea": "Historia con la cita de la cuadrilla",
+"antelacion": 1
+},
+{
+"clave": "2027-05-25·San Urbano · Voto de la Ciudad·Virgen del Prado",
+"fecha": "2027-05-25",
+"titulo": "San Urbano · Voto de la Ciudad",
+"tipo": "Gloria",
+"detalle": "Virgen del Prado",
+"idea": "Aniversario de la aparición y fin del Novenario",
+"antelacion": 0
+},
+{
+"clave": "2027-07-16·Virgen del Carmen·Salida 21:00 · Convento del Carmen",
+"fecha": "2027-07-16",
+"titulo": "Virgen del Carmen",
+"tipo": "Gloria",
+"detalle": "Salida 21:00 · Convento del Carmen",
+"idea": "Procesión: horario y recorrido",
+"antelacion": 2
+},
+{
+"clave": "2027-07-31·La Pandorga·Ofrenda a la Virgen del Prado",
+"fecha": "2027-07-31",
+"titulo": "La Pandorga",
+"tipo": "Gloria",
+"detalle": "Ofrenda a la Virgen del Prado",
+"idea": "Ofrenda de flores y frutos en la Catedral",
+"antelacion": 1
+},
+{
+"clave": "2027-08-15·Virgen del Prado·Salida 20:00 · Catedral",
+"fecha": "2027-08-15",
+"titulo": "Virgen del Prado",
+"tipo": "Gloria",
+"detalle": "Salida 20:00 · Catedral",
+"idea": "Procesión de la Patrona: horario y recorrido",
+"antelacion": 2
+},
+{
+"clave": "2027-10-15·Santa Teresa de Jesús·Convento del Carmen",
+"fecha": "2027-10-15",
+"titulo": "Santa Teresa de Jesús",
+"tipo": "Gloria",
+"detalle": "Convento del Carmen",
+"idea": "Procesión de Santa Teresa",
+"antelacion": 2
+}
+]

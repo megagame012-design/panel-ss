@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Panel SS Ciudad Real</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0907">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Panel SS">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="marca.css">
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<style>
+html,body{margin:0;background:#0B0907;color-scheme:dark}
+body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+:root{--font-anthropic-sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;--cds-dur-slow:.6s;--cds-ease-out:cubic-bezier(.2,.7,.2,1)}
+.ssp{border-radius:0!important;overflow:visible!important;min-height:100vh;padding-bottom:env(safe-area-inset-bottom,0px)}
+.ssp-bar{padding-top:calc(12px + env(safe-area-inset-top,0px))}
+.ssp-in{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right,0px))}
+[hidden]{display:none!important}
+</style>
+</head><body>
+<style>
+/* Panel SS Ciudad Real · negro cálido, dorado de orfebrería y Cormorant, como la web */
+#dash-root{--dash-gutter:0}
+.ssp{--n:#0B0907;--n2:#15110C;--n3:#1E1811;--linea:rgba(227,198,107,.18);--linea2:rgba(227,198,107,.32);--oro:#E3C66B;--oro2:#B08A2E;--crema:#F6F2EA;--crema2:rgba(246,242,234,.68);--crema3:rgba(246,242,234,.45);
+  --serif:'SS Cormorant','Cormorant Garamond',Georgia,serif;--sans:var(--font-anthropic-sans),-apple-system,'Helvetica Neue',sans-serif;
+  --c-fest:#64D2FF;--c-culto:#C58CF2;--c-ss:#E3C66B;--c-cua:#9D8CFF;--c-ens:#7BD88F;--c-glo:#FF8FB1;--c-web:#A8A29A;--c-hito:#F2B84B;
+  background:var(--n);color:var(--crema);font-family:var(--sans);border-radius:14px;overflow:hidden;color-scheme:dark}
+.ssp *{box-sizing:border-box}
+.ssp-in{padding:0 clamp(16px,4vw,44px)}
+.ssp-over{margin:0;font:700 11px/1.3 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--oro)}
+.ssp-h2{margin:0;font:600 clamp(26px,3.4vw,34px)/1.05 var(--serif);letter-spacing:.005em;color:var(--crema)}
+.ssp-h2 small{display:block;margin-top:6px;font:500 13px/1.4 var(--sans);letter-spacing:0;color:var(--crema3)}
+.ssp-orn{display:flex;align-items:center;gap:12px;color:var(--oro)}
+.ssp-orn::before,.ssp-orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--linea2),transparent)}
+
+/* Portada */
+.ssp-hero{position:relative;isolation:isolate;min-height:440px;padding-block:34px 30px;display:flex;flex-direction:column;justify-content:space-between;gap:26px;border-bottom:1px solid var(--linea)}
+.ssp-hero-foto{position:absolute;z-index:-2;inset:0 0 0 auto;width:min(58%,560px);background-size:cover;background-position:50% 22%}
+.ssp-hero::before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,var(--n) 42%,rgba(11,9,7,.72) 62%,rgba(11,9,7,.15) 100%),linear-gradient(0deg,var(--n) 0%,rgba(11,9,7,0) 34%)}
+.ssp-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.ssp-logo{display:block;width:min(260px,58vw);aspect-ratio:900/174}
+.ssp-tag{flex:none;padding:7px 12px;border-radius:30px;font:700 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--oro);box-shadow:inset 0 0 0 1px var(--linea2);background:rgba(11,9,7,.55)}
+.ssp-count{max-width:560px}
+.ssp-num{display:flex;align-items:flex-end;gap:14px;margin:10px 0 6px}
+.ssp-num b{font:600 clamp(96px,17vw,168px)/.82 var(--serif);font-variant-numeric:lining-nums tabular-nums;color:var(--crema);letter-spacing:-.02em}
+.ssp-num span{padding-bottom:12px;font:600 clamp(26px,4vw,36px)/1 var(--serif);color:var(--oro)}
+.ssp-para{margin:0;font:500 clamp(20px,2.6vw,26px)/1.25 var(--serif);color:var(--crema)}
+.ssp-para em{display:block;margin-top:4px;font:500 13px/1.4 var(--sans);font-style:normal;color:var(--crema3);letter-spacing:.02em}
+.ssp-track{position:relative;margin-top:22px;max-width:560px}
+.ssp-track-bar{position:relative;height:3px;border-radius:2px;background:rgba(246,242,234,.12)}
+.ssp-track-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:2px;background:linear-gradient(90deg,var(--oro2),var(--oro))}
+.ssp-track-bar u{position:absolute;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:var(--oro);box-shadow:0 0 0 4px rgba(227,198,107,.22)}
+.ssp-track-bar s{position:absolute;top:-4px;width:1px;height:11px;background:var(--crema3)}
+.ssp-track-lb{display:flex;justify-content:space-between;margin-top:9px;font:600 11px/1.2 var(--sans);letter-spacing:.06em;color:var(--crema3);text-transform:uppercase}
+.ssp-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:620px;border-top:1px solid var(--linea)}
+.ssp-stat{padding:14px 14px 0 0;min-width:0}
+.ssp-stat + .ssp-stat{padding-left:16px;border-left:1px solid var(--linea)}
+.ssp-stat b{display:block;font:600 34px/1 var(--serif);font-variant-numeric:lining-nums tabular-nums}
+.ssp-stat span{display:block;margin-top:5px;font:500 12px/1.35 var(--sans);color:var(--crema2)}
+
+/* Hoy */
+.ssp-hoy{margin:26px 0 0;padding:18px 20px;border-radius:14px;background:linear-gradient(135deg,rgba(227,198,107,.13),rgba(227,198,107,.04));box-shadow:inset 0 0 0 1px var(--linea2);display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;align-items:center}
+.ssp-hoy-d{grid-row:span 2;display:flex;flex-direction:column;align-items:center;justify-content:center;width:64px;height:68px;border-radius:12px;background:var(--crema);color:#1A1410}
+.ssp-hoy-d i{font:800 10px/1 var(--sans);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:#7A1F2B}
+.ssp-hoy-d b{font:700 30px/1 var(--serif)}
+.ssp-hoy-d em{font:800 10px/1 var(--sans);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:#8A6D1E}
+.ssp-hoy h3{margin:0;font:600 22px/1.15 var(--serif)}
+.ssp-hoy ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.ssp-hoy li{display:flex;gap:10px;align-items:baseline;font:500 14px/1.4 var(--sans);color:var(--crema)}
+.ssp-hoy li small{color:var(--crema3);font-size:12px}
+.ssp-dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--c,var(--oro));transform:translateY(-1px)}
+
+/* Rejilla principal */
+.ssp-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:34px;padding-block:40px 10px}
+@media (max-width:760px){.ssp-grid{grid-template-columns:minmax(0,1fr)}.ssp-hero-foto{width:100%;opacity:.38}.ssp-hero::before{background:linear-gradient(180deg,rgba(11,9,7,.55),var(--n) 92%)}}
+.ssp-col{display:flex;flex-direction:column;gap:18px;min-width:0}
+.ssp-chips{display:flex;flex-wrap:wrap;gap:6px}
+.ssp-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border:0;border-radius:30px;background:var(--n2);box-shadow:inset 0 0 0 1px var(--linea);color:var(--crema2);font:600 12px/1 var(--sans);cursor:pointer}
+.ssp-chip[aria-pressed=true]{background:var(--crema);color:#1A1410;box-shadow:none}
+.ssp-chip:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.ssp-agenda{display:flex;flex-direction:column}
+.ssp-wk{margin:14px 0 6px;font:700 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--crema3)}
+.ssp-wk:first-child{margin-top:0}
+.ssp-it{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid var(--linea);align-items:start}
+.ssp-st{display:flex;flex-direction:column;align-items:center;padding:6px 0 7px;border-radius:10px;background:var(--n3);box-shadow:inset 0 0 0 1px var(--linea)}
+.ssp-st i{font:800 9px/1 var(--sans);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--crema3)}
+.ssp-st b{font:600 24px/1 var(--serif);margin:2px 0}
+.ssp-st em{font:800 9px/1 var(--sans);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--oro)}
+.ssp-st.hoy{background:var(--crema);color:#1A1410}.ssp-st.hoy i{color:#7A1F2B}.ssp-st.hoy em{color:#8A6D1E}
+.ssp-it-m{min-width:0}
+.ssp-it-k{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font:700 10px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.ssp-it-k span{color:var(--crema3);letter-spacing:.06em}
+.ssp-it-t{margin:3px 0 0;font:600 19px/1.15 var(--serif);color:var(--crema)}
+.ssp-it-d{margin:2px 0 0;font:500 12.5px/1.4 var(--sans);color:var(--crema3)}
+.ssp-it-i{margin:6px 0 0;padding-left:10px;border-left:2px solid var(--c);font:500 13.5px/1.45 var(--sans);color:var(--crema2)}
+.ssp-more{align-self:flex-start;padding:9px 14px;border:0;border-radius:30px;background:transparent;box-shadow:inset 0 0 0 1px var(--linea2);color:var(--oro);font:600 12.5px/1 var(--sans);cursor:pointer}
+.ssp-card{padding:20px;border-radius:14px;background:var(--n2);box-shadow:inset 0 0 0 1px var(--linea)}
+.ssp-hitos{position:relative;margin:4px 0 0;padding:0 0 0 22px;list-style:none}
+.ssp-hitos::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--linea2)}
+.ssp-hitos li{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:7px 0}
+.ssp-hitos li::before{content:"";position:absolute;left:-21px;top:13px;width:9px;height:9px;border-radius:50%;background:var(--n2);box-shadow:inset 0 0 0 1.5px var(--crema3)}
+.ssp-hitos li b{font:600 22px/1 var(--serif);font-variant-numeric:lining-nums tabular-nums}
+.ssp-hitos li b small{margin-left:4px;font:500 12px var(--sans);color:var(--crema3)}
+.ssp-hitos li span{font:500 12.5px/1 var(--sans);color:var(--crema2)}
+.ssp-hitos li.past{opacity:.38}.ssp-hitos li.past::before{background:var(--crema3)}
+.ssp-hitos li.next::before{background:var(--oro);box-shadow:0 0 0 4px rgba(227,198,107,.22)}
+.ssp-hitos li.next b{color:var(--oro)}
+.ssp-cal-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.ssp-cal-h b{font:600 22px/1 var(--serif);text-transform:capitalize}
+.ssp-cal-h span{font:500 12px var(--sans);color:var(--crema3)}
+.ssp-cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;text-align:center}
+.ssp-cal i{font:700 10px/1 var(--sans);font-style:normal;letter-spacing:.08em;color:var(--crema3);padding-bottom:6px}
+.ssp-cal div{position:relative;padding:7px 0 12px;border-radius:8px;font:500 13px/1 var(--sans);font-variant-numeric:tabular-nums;color:var(--crema2)}
+.ssp-cal div.h{background:var(--crema);color:#1A1410;font-weight:700}
+.ssp-cal div.p{opacity:.35}
+.ssp-cal div u{position:absolute;left:50%;bottom:4px;display:flex;gap:2px;transform:translateX(-50%)}
+.ssp-cal div u s{width:4px;height:4px;border-radius:50%;background:var(--c)}
+.ssp-ley{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:12px;font:500 11.5px/1 var(--sans);color:var(--crema3)}
+.ssp-ley span{display:inline-flex;align-items:center;gap:6px}
+
+/* Audiencia */
+.ssp-aud{padding-block:30px 8px;display:flex;flex-direction:column;gap:18px}
+.ssp-aud-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.ssp-net{position:relative;padding:18px;border-radius:14px;background:var(--n2);box-shadow:inset 0 0 0 1px var(--linea);display:flex;flex-direction:column;gap:6px;min-width:0}
+.ssp-net-h{display:flex;align-items:center;gap:10px;font:700 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--crema2)}
+.ssp-ico{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--g);color:#fff}
+.ssp-ico svg{width:19px;height:19px}
+.ssp-net b{margin-top:6px;font:600 40px/1 var(--serif);font-variant-numeric:lining-nums tabular-nums}
+.ssp-net p{margin:0;font:500 12.5px/1.45 var(--sans);color:var(--crema3)}
+.ssp-pend{display:inline-flex;align-self:flex-start;margin-top:4px;padding:5px 9px;border-radius:20px;font:700 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--crema2);box-shadow:inset 0 0 0 1px var(--linea2)}
+.ssp-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:30px;padding-block:22px 26px;border-top:1px solid var(--linea);font:500 12px/1.4 var(--sans);color:var(--crema3)}
+.ssp-emblema{flex:none;width:34px;height:34px;opacity:.85}
+[data-dash-source-state=refreshing]{opacity:.5}
+@media (prefers-reduced-motion:no-preference){.ssp-track-bar i{transition:width var(--cds-dur-slow,.6s) var(--cds-ease-out,ease)}}
+
+/* App: barra de secciones */
+.ssp-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;padding:12px clamp(16px,4vw,44px);background:rgba(11,9,7,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+.ssp-bar .ssp-emblema{width:30px;height:30px}
+.ssp-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.ssp-tabs::-webkit-scrollbar{display:none}
+.ssp-tab{flex:none;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:0;border-radius:30px;background:transparent;color:var(--crema2);font:600 13px/1 var(--sans);cursor:pointer}
+.ssp-tab svg{width:16px;height:16px}
+.ssp-tab[aria-selected=true]{background:var(--crema);color:#1A1410}
+.ssp-tab:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.ssp-sec{padding-block:30px 10px;display:flex;flex-direction:column;gap:22px}
+.ssp-sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ssp-sec-h .ssp-net-h{font-size:13px}
+.ssp-sel{appearance:none;-webkit-appearance:none;padding:9px 34px 9px 14px;border:0;border-radius:30px;background-color:var(--n2);box-shadow:inset 0 0 0 1px var(--linea2);color:var(--crema);font:600 13px/1 var(--sans);cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,var(--oro) 50%),linear-gradient(135deg,var(--oro) 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+.ssp-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.ssp-kpi{padding:16px;border-radius:14px;background:var(--n2);box-shadow:inset 0 0 0 1px var(--linea);min-width:0}
+.ssp-kpi.dest{background:linear-gradient(135deg,rgba(227,198,107,.14),rgba(227,198,107,.04));box-shadow:inset 0 0 0 1px var(--linea2)}
+.ssp-kpi span{display:block;font:700 10.5px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--crema3)}
+.ssp-kpi b{display:block;margin-top:8px;font:600 34px/1 var(--serif);font-variant-numeric:lining-nums tabular-nums;color:var(--crema)}
+.ssp-kpi small{display:block;margin-top:6px;font:600 12px/1.3 var(--sans);color:var(--crema3)}
+.ssp-kpi small.up{color:#7BD88F}.ssp-kpi small.down{color:#FF8F8F}
+.ssp-charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.ssp-chart{position:relative;padding:18px 18px 10px;border-radius:14px;background:var(--n2);box-shadow:inset 0 0 0 1px var(--linea);min-width:0}
+.ssp-chart h3{margin:0 0 2px;font:600 20px/1.15 var(--serif)}
+.ssp-chart p{margin:0 0 10px;font:500 12px/1.4 var(--sans);color:var(--crema3)}
+.ssp-plot{position:relative;min-height:190px}
+.ssp-plot svg{display:block;width:100%;overflow:visible}
+.ssp-plot text{fill:var(--crema3);font:500 11px var(--sans)}
+.ssp-plot .grid line{stroke:rgba(246,242,234,.08)}
+.ssp-plot .vacio{display:grid;place-items:center;min-height:190px;text-align:center;font:500 13px/1.5 var(--sans);color:var(--crema3);padding:0 20px}
+.ssp-tip{position:absolute;z-index:3;pointer-events:none;padding:7px 10px;border-radius:9px;background:#F6F2EA;color:#1A1410;font:600 12px/1.3 var(--sans);box-shadow:0 8px 24px rgba(0,0,0,.4);white-space:nowrap;transform:translate(-50%,-110%)}
+.ssp-tip small{display:block;font-weight:500;color:#6b6257}
+.ssp-aviso{margin:0;padding:12px 14px;border-radius:12px;background:var(--n2);box-shadow:inset 0 0 0 1px var(--linea);font:500 12.5px/1.5 var(--sans);color:var(--crema2)}
+.ssp-marca{flex:none;display:block;border-radius:22%;box-shadow:0 0 0 1px var(--linea)}
+.ssp-lock{display:flex;align-items:center;gap:14px}
+.ssp-lock span{display:flex;flex-direction:column;gap:3px}
+.ssp-lock i{font:700 10.5px/1 var(--sans);font-style:normal;letter-spacing:.24em;text-transform:uppercase;color:var(--oro)}
+.ssp-lock b{font:600 clamp(24px,3.4vw,30px)/1 var(--serif);color:var(--crema)}
+.ssp-sello{flex:none;display:grid;place-items:center;width:var(--s);height:var(--s);border-radius:50%;
+    box-shadow:0 0 0 1.5px #E3C66B,0 0 0 calc(var(--s) * .06) #0B0907,0 0 0 calc(var(--s) * .06 + 1px) rgba(227,198,107,.45),0 8px 22px rgba(0,0,0,.55)}
+.ssp-sello .ssp-emblema{width:58%;height:58%;opacity:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+.ssp-lock .ssp-sello{margin:4px}
+</style>
+
+<div class="ssp">
+  <nav class="ssp-bar" aria-label="Secciones">
+    <span class="ssp-sello" style="--s:32px" role="img" aria-label="SS Ciudad Real"></span>
+    <div class="ssp-tabs" role="tablist">
+      <button type="button" class="ssp-tab" role="tab" data-sec="fechas" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Fechas</button>
+      <button type="button" class="ssp-tab" role="tab" data-sec="web" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9S14.6 18.4 12 21c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg>Web</button>
+      <button type="button" class="ssp-tab" role="tab" data-sec="ig" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>Instagram</button>
+      <button type="button" class="ssp-tab" role="tab" data-sec="fb" aria-selected="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5H16.7V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.5V21h3z"/></svg>Facebook</button>
+      <button type="button" class="ssp-tab" role="tab" data-sec="tk" aria-selected="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.3 2.2 1.6 3.7 3.9 3.9v3c-1.4.1-2.7-.3-3.9-1.1v6.1c0 3.4-2.6 5.6-5.6 5.6-3.1 0-5.5-2.4-5.5-5.4 0-3.3 2.9-5.8 6.3-5.3v3.1c-1.6-.4-3.2.6-3.2 2.2 0 1.3 1 2.3 2.4 2.3 1.5 0 2.5-1 2.5-2.8V3h3.1z"/></svg>TikTok</button>
+    </div>
+  </nav>
+
+  <div id="fechas">
+  <header class="ssp-hero ssp-in" id="portada">
+    <div class="ssp-hero-foto" role="img" aria-label="Nuestra Señora de la Soledad bajo palio"></div>
+    <div class="ssp-top">
+      <span class="ssp-lock"><span class="ssp-sello" style="--s:58px" role="img" aria-label="SS Ciudad Real"></span><span><i>Panel de control</i><b>SS Ciudad Real</b></span></span>
+      <span class="ssp-tag">Panel privado</span>
+    </div>
+    <div class="ssp-count" id="cuenta-atras">
+      <p class="ssp-over">Cuenta atrás · Semana Santa 2027</p>
+      <p class="ssp-num"><b data-draw="dias" data-source="cuenta" data-field="dias" data-row="0">—</b><span>días</span></p>
+      <p class="ssp-para">para el Domingo de Pasión<em>Domingo, 14 de marzo de 2027 · abre nuestra Semana Santa</em></p>
+      <div class="ssp-track" id="recorrido">
+        <div class="ssp-track-bar" data-draw="pista" data-source="cuenta"></div>
+        <div class="ssp-track-lb"><span>Pascua 2026</span><span>Ceniza</span><span>Domingo de Pasión</span></div>
+      </div>
+    </div>
+    <div class="ssp-stats" id="cifras">
+      <div class="ssp-stat"><b data-draw="ramos" data-source="cuenta" data-field="dias" data-row="1">—</b><span>días para el Domingo de Ramos</span></div>
+      <div class="ssp-stat"><b data-draw="ceniza" data-source="cuenta" data-field="dias" data-row="2">—</b><span>días para el Miércoles de Ceniza</span></div>
+      <div class="ssp-stat"><b data-draw="hito" data-source="hitos" data-field="dias">—</b><span data-draw="hito-txt">—</span></div>
+    </div>
+  </header>
+
+  <div class="ssp-in">
+    <section class="ssp-hoy" id="hoy" aria-label="Hoy">
+      <div class="ssp-hoy-d" data-draw="hoy-sello"></div>
+      <h3>Hoy toca</h3>
+      <ul data-draw="hoy" data-source="hoy"></ul>
+    </section>
+
+    <div class="ssp-grid">
+      <section class="ssp-col" id="publicar">
+        <h2 class="ssp-h2">Agenda de publicaciones<small>Qué subir y qué día, con las fechas de la web: festividades, Semana Santa, glorias y citas de las cuadrillas.</small></h2>
+        <div class="ssp-chips" role="group" aria-label="Filtrar por tipo">
+          <button type="button" class="ssp-chip" data-tipo="" aria-pressed="true">Todo</button>
+          <button type="button" class="ssp-chip" data-tipo="Festividad" aria-pressed="false"><i class="ssp-dot" style="--c:var(--c-fest)"></i>Festividades</button>
+          <button type="button" class="ssp-chip" data-tipo="Semana Santa" aria-pressed="false"><i class="ssp-dot" style="--c:var(--c-ss)"></i>Semana Santa</button>
+          <button type="button" class="ssp-chip" data-tipo="Ensayo" aria-pressed="false"><i class="ssp-dot" style="--c:var(--c-ens)"></i>Cuadrillas</button>
+          <button type="button" class="ssp-chip" data-tipo="Gloria" aria-pressed="false"><i class="ssp-dot" style="--c:var(--c-glo)"></i>Glorias</button>
+          <button type="button" class="ssp-chip" data-tipo="Culto" aria-pressed="false"><i class="ssp-dot" style="--c:var(--c-culto)"></i>Cultos</button>
+        </div>
+        <div class="ssp-agenda" data-draw="agenda" data-source="proximas"></div>
+        <button type="button" class="ssp-more" id="ver-mas">Ver más fechas</button>
+      </section>
+
+      <aside class="ssp-col" id="lateral">
+        <div class="ssp-card" id="calendario">
+          <div class="ssp-cal-h"><b data-draw="cal-mes">—</b><span>Fechas clave del mes</span></div>
+          <div class="ssp-cal" data-draw="cal" data-source="fechas"></div>
+          <div class="ssp-ley"><span><i class="ssp-dot" style="--c:var(--c-fest)"></i>Festividad</span><span><i class="ssp-dot" style="--c:var(--c-ens)"></i>Cuadrillas</span><span><i class="ssp-dot" style="--c:var(--c-ss)"></i>Semana Santa</span><span><i class="ssp-dot" style="--c:var(--c-glo)"></i>Gloria</span></div>
+        </div>
+        <div class="ssp-card" id="hitos">
+          <h2 class="ssp-h2" style="font-size:24px">Hitos de la cuenta atrás<small>Días que faltan para el Domingo de Pasión: momentos para una publicación especial.</small></h2>
+          <ul class="ssp-hitos" data-draw="hitos" data-source="hitos"></ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+  </div>
+
+  <div class="ssp-in">
+    <section class="ssp-sec" id="web" hidden>
+      <div class="ssp-sec-h">
+        <div><div class="ssp-net-h"><span class="ssp-ico" style="--g:linear-gradient(135deg,#B08A2E,#E3C66B)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9S14.6 18.4 12 21c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg></span>Web</div><h2 class="ssp-h2" style="margin-top:12px">ssciudadreal.es<small>Contador anónimo instalado el 9 de noviembre de 2026. Una visita por sesión; un visitante por dispositivo.</small></h2></div>
+      </div>
+      <div class="ssp-kpis">
+        <div class="ssp-kpi dest"><span>Visitas totales</span><b data-draw="w-visitas" data-source="web-res" data-field="visitas" data-row="0">—</b><small>desde la instalación</small></div>
+        <div class="ssp-kpi"><span>Visitantes</span><b data-draw="w-visitantes" data-source="web-res" data-field="visitantes" data-row="0">—</b><small>dispositivos distintos</small></div>
+        <div class="ssp-kpi"><span>Hoy</span><b data-draw="w-hoy" data-source="web-res" data-field="hoy" data-row="0">—</b><small>visitas de hoy</small></div>
+        <div class="ssp-kpi"><span>App instalada</span><b data-draw="w-app" data-source="web-res" data-field="app" data-row="0">—</b><small data-draw="w-app-s">—</small></div>
+      </div>
+      <div class="ssp-charts">
+        <div class="ssp-chart" id="g-web"><h3>Visitas por día</h3><p>Desde que se instaló el contador.</p><div class="ssp-plot" data-draw="g-web" data-source="web"></div></div>
+      </div>
+      <p class="ssp-aviso">Cifras en directo del contador de la web: se leen cada vez que abres esta sección.</p>
+    </section>
+    
+    <section class="ssp-sec" id="ig" hidden>
+      <div class="ssp-sec-h">
+        <div><div class="ssp-net-h"><span class="ssp-ico" style="--g:linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>Instagram</div><h2 class="ssp-h2" style="margin-top:12px">@ss.ciudad_real<small><span data-red-act>Copia de Metricool.</span></small></h2></div>
+        <select class="ssp-sel" data-periodo aria-label="Periodo"><option value="7">Últimos 7 días</option><option value="30" selected>Últimos 30 días</option><option value="90">Últimos 90 días</option></select>
+      </div>
+      <div class="ssp-kpis"><div class="ssp-kpi dest"><span>Seguidores</span><b data-draw="k-ig-seguidores" data-source="ig-res" data-field="seguidores" data-row="0">—</b><small data-draw="s-ig-seguidores">—</small></div><div class="ssp-kpi"><span>Nuevos seguidores</span><b data-draw="k-ig-ganados" data-source="ig-res" data-field="ganados" data-row="0">—</b><small>en el periodo</small></div><div class="ssp-kpi"><span>Alcance</span><b data-draw="k-ig-alcance" data-source="ig-res" data-field="alcance" data-row="0">—</b><small>cuentas alcanzadas</small></div><div class="ssp-kpi"><span>Visualizaciones</span><b data-draw="k-ig-vistas" data-source="ig-res" data-field="vistas" data-row="0">—</b><small>de todo el contenido</small></div><div class="ssp-kpi"><span>Interacciones</span><b data-draw="k-ig-interacciones" data-source="ig-res" data-field="interacciones" data-row="0">—</b><small>publicaciones y reels</small></div><div class="ssp-kpi"><span>Publicaciones</span><b data-draw="k-ig-publicaciones" data-source="ig-res" data-field="publicaciones" data-row="0">—</b><small>posts y reels · <span data-draw="ig-stories">—</span> historias</small></div></div>
+      <div class="ssp-charts"><div class="ssp-chart" id="g-ig-seguidores"><h3>Seguidores</h3><p>Evolución diaria.</p><div class="ssp-plot" data-draw="g-ig-seguidores" data-source="ig"></div></div><div class="ssp-chart" id="g-ig-vistas"><h3>Visualizaciones por día</h3><p>Todo el contenido de la cuenta.</p><div class="ssp-plot" data-draw="g-ig-vistas" data-source="ig"></div></div></div>
+      <p class="ssp-aviso" id="aviso-ig-t">Aún no hay datos de esta cuenta. Las cifras de redes son una copia de Metricool que se actualiza al pedírselo a Claude; en cuanto Metricool tenga el historial, aparecerán aquí.</p><span data-draw="aviso-ig"></span>
+    </section>
+    
+    <section class="ssp-sec" id="fb" hidden>
+      <div class="ssp-sec-h">
+        <div><div class="ssp-net-h"><span class="ssp-ico" style="--g:#1877F2"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5H16.7V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.5V21h3z"/></svg></span>Facebook</div><h2 class="ssp-h2" style="margin-top:12px">Página de SS Ciudad Real<small><span data-red-act>Copia de Metricool.</span></small></h2></div>
+        <select class="ssp-sel" data-periodo aria-label="Periodo"><option value="7">Últimos 7 días</option><option value="30" selected>Últimos 30 días</option><option value="90">Últimos 90 días</option></select>
+      </div>
+      <div class="ssp-kpis"><div class="ssp-kpi dest"><span>Seguidores</span><b data-draw="k-fb-seguidores" data-source="fb-res" data-field="seguidores" data-row="0">—</b><small data-draw="s-fb-seguidores">—</small></div><div class="ssp-kpi"><span>Nuevos seguidores</span><b data-draw="k-fb-ganados" data-source="fb-res" data-field="ganados" data-row="0">—</b><small>en el periodo</small></div><div class="ssp-kpi"><span>Visualizaciones</span><b data-draw="k-fb-vistas" data-source="fb-res" data-field="vistas" data-row="0">—</b><small>del contenido de la página</small></div><div class="ssp-kpi"><span>Visitas a la página</span><b data-draw="k-fb-visitas" data-source="fb-res" data-field="visitas" data-row="0">—</b><small>en el periodo</small></div><div class="ssp-kpi"><span>Interacciones</span><b data-draw="k-fb-interacciones" data-source="fb-res" data-field="interacciones" data-row="0">—</b><small>publicaciones y reels</small></div><div class="ssp-kpi"><span>Publicaciones</span><b data-draw="k-fb-publicaciones" data-source="fb-res" data-field="publicaciones" data-row="0">—</b><small>posts y reels</small></div></div>
+      <div class="ssp-charts"><div class="ssp-chart" id="g-fb-seguidores"><h3>Seguidores</h3><p>Evolución diaria.</p><div class="ssp-plot" data-draw="g-fb-seguidores" data-source="fb"></div></div><div class="ssp-chart" id="g-fb-vistas"><h3>Visualizaciones por día</h3><p>Contenido de la página.</p><div class="ssp-plot" data-draw="g-fb-vistas" data-source="fb"></div></div></div>
+      <p class="ssp-aviso" id="aviso-fb-t">Aún no hay datos de esta cuenta. Las cifras de redes son una copia de Metricool que se actualiza al pedírselo a Claude; en cuanto Metricool tenga el historial, aparecerán aquí.</p><span data-draw="aviso-fb"></span>
+    </section>
+    
+    <section class="ssp-sec" id="tk" hidden>
+      <div class="ssp-sec-h">
+        <div><div class="ssp-net-h"><span class="ssp-ico" style="--g:#111"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.3 2.2 1.6 3.7 3.9 3.9v3c-1.4.1-2.7-.3-3.9-1.1v6.1c0 3.4-2.6 5.6-5.6 5.6-3.1 0-5.5-2.4-5.5-5.4 0-3.3 2.9-5.8 6.3-5.3v3.1c-1.6-.4-3.2.6-3.2 2.2 0 1.3 1 2.3 2.4 2.3 1.5 0 2.5-1 2.5-2.8V3h3.1z"/></svg></span>TikTok</div><h2 class="ssp-h2" style="margin-top:12px">@ss.ciudad_real<small><span data-red-act>Copia de Metricool.</span></small></h2></div>
+        <select class="ssp-sel" data-periodo aria-label="Periodo"><option value="7">Últimos 7 días</option><option value="30" selected>Últimos 30 días</option><option value="90">Últimos 90 días</option></select>
+      </div>
+      <div class="ssp-kpis"><div class="ssp-kpi dest"><span>Seguidores</span><b data-draw="k-tk-seguidores" data-source="tk-res" data-field="seguidores" data-row="0">—</b><small data-draw="s-tk-seguidores">—</small></div><div class="ssp-kpi"><span>Nuevos seguidores</span><b data-draw="k-tk-ganados" data-source="tk-res" data-field="ganados" data-row="0">—</b><small>en el periodo</small></div><div class="ssp-kpi"><span>Reproducciones</span><b data-draw="k-tk-vistas" data-source="tk-res" data-field="vistas" data-row="0">—</b><small>en el periodo</small></div><div class="ssp-kpi"><span>Alcance</span><b data-draw="k-tk-alcance" data-source="tk-res" data-field="alcance" data-row="0">—</b><small>personas que vieron un vídeo</small></div><div class="ssp-kpi"><span>Interacciones</span><b data-draw="k-tk-interacciones" data-source="tk-res" data-field="interacciones" data-row="0">—</b><small>me gusta, comentarios y compartidos</small></div><div class="ssp-kpi"><span>Vídeos</span><b data-draw="k-tk-videos" data-source="tk-res" data-field="videos" data-row="0">—</b><small>publicados</small></div></div>
+      <div class="ssp-charts"><div class="ssp-chart" id="g-tk-seguidores"><h3>Seguidores</h3><p>Evolución diaria.</p><div class="ssp-plot" data-draw="g-tk-seguidores" data-source="tk"></div></div><div class="ssp-chart" id="g-tk-vistas"><h3>Reproducciones por día</h3><p>Vídeos de la cuenta.</p><div class="ssp-plot" data-draw="g-tk-vistas" data-source="tk"></div></div></div>
+      <p class="ssp-aviso" id="aviso-tk-t">Aún no hay datos de esta cuenta. Las cifras de redes son una copia de Metricool que se actualiza al pedírselo a Claude; en cuanto Metricool tenga el historial, aparecerán aquí.</p><span data-draw="aviso-tk"></span>
+    </section>
+
+    <footer class="ssp-foot">
+      <span>ssciudadreal.es · La idea no es grabar, es sentir.</span>
+      <span class="ssp-sello" style="--s:30px" role="img" aria-label="SS Ciudad Real"></span>
+    </footer>
+  </div>
+</div>
+<script>
+/* Motor del panel fuera de Claude: carga los datos, recalcula y redibuja.
+   Fechas: data/fechas.json · Redes: data/redes.json (copia de Metricool) · Web: contador en directo */
+window.dash = (() => {
+  const store = {}, calcs = [], draws = {}, onDatas = [];
+  let params = {}, redes = null;
+  const ok = data => ({ status:'ok', data, columns: data[0] ? Object.keys(data[0]) : [] });
+  const api = {
+    data: id => store[id] || { status:'loading', data: [] },
+    calc: (id, { inputs, fn }) => { calcs.push({ id, inputs, fn }); },
+    loader: () => {},
+    onData: fn => { onDatas.push(fn); fn(); },
+    draw: (name, fn) => {
+      if (typeof fn === 'function') draws[name] = fn;
+      const f = draws[name]; if (!f) return;
+      document.querySelectorAll(`[data-draw="${name}"]`).forEach(el => { try { f(el); } catch (e) { console.error(name, e); } });
+    },
+    params: () => ({ ...params }),
+    setParams: p => { params = { ...params, ...p }; filtrarRedes(); recalcular(); },
+    resetParams: () => {},
+    setLink: s => { try { history.replaceState(null, '', '#' + s); } catch (e) {} },
+    refresh: () => {},
+    colors: ['#E3C66B'],
+    _set: (id, v) => { store[id] = v; },
+    _redes: r => { redes = r; filtrarRedes(); },
+    _recalcular: () => recalcular()
+  };
+  function filtrarRedes(){
+    if (!redes) return;
+    ['ig', 'fb', 'tk'].forEach(id => {
+      const filas = (redes[id] || []).filter(r => (!params.desde || r.fecha >= params.desde) && (!params.hasta || r.fecha <= params.hasta));
+      store[id] = ok(filas);
+    });
+  }
+  function recalcular(){
+    calcs.forEach(c => {
+      const ins = c.inputs.map(i => api.data(i));
+      if (ins.every(x => x.status === 'ok')) { try { store[c.id] = ok(c.fn(...ins.map(x => x.data))); } catch (e) { console.error(c.id, e); } }
+    });
+    onDatas.forEach(f => f());
+    Object.keys(draws).forEach(n => api.draw(n));
+  }
+  return api;
+})();
+</script>
+<script>
+window.sspD = s => { const [y, m, d] = String(s).split('-').map(Number); return new Date(y, m - 1, d); };
+window.sspF = (s, o) => window.sspD(s).toLocaleDateString('es-ES', o || { day:'numeric', month:'short' });
+window.sspIso = x => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`;
+window.sspEstado = { tipo:'', n:12 };
+window.sspColor = { 'Festividad':'var(--c-fest)', 'Culto':'var(--c-culto)', 'Semana Santa':'var(--c-ss)', 'Cuaresma':'var(--c-cua)', 'Ensayo':'var(--c-ens)', 'Gloria':'var(--c-glo)', 'Web':'var(--c-web)', 'Hito':'var(--c-hito)' };
+
+dash.calc('cuenta', { inputs:['fechas'], title:'Cuenta atrás', description:'Días que faltan desde hoy para el Domingo de Pasión, el Domingo de Ramos y el Miércoles de Ceniza de 2027.',
+  fn: (fechas) => {
+    const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+    const dias = s => { const [y, m, d] = s.split('-').map(Number); return Math.round((new Date(y, m - 1, d) - hoy) / 864e5); };
+    return ['Domingo de Pasión', 'Domingo de Ramos', 'Miércoles de Ceniza'].map(meta => { const f = fechas.find(r => r.titulo === meta); return { meta, fecha: f ? f.fecha : null, dias: f ? dias(f.fecha) : null }; });
+  } });
+
+dash.calc('hitos', { inputs:['fechas'], title:'Hitos de la cuenta atrás', description:'Cada hito (200, 150, 100… días antes del Domingo de Pasión) con la fecha en que se cumple y si ya pasó.',
+  fn: (fechas) => {
+    const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+    const p = fechas.find(r => r.titulo === 'Domingo de Pasión'); if (!p) return [];
+    const [y, m, d] = p.fecha.split('-').map(Number), meta = new Date(y, m - 1, d);
+    const iso = x => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`;
+    const rows = [200, 150, 125, 100, 75, 60, 50, 40, 30, 25, 20, 15, 10, 7, 5, 3, 2, 1].map(n => { const f = new Date(meta); f.setDate(f.getDate() - n); return { dias:n, fecha:iso(f), estado: f < hoy ? 'pasado' : f.getTime() === hoy.getTime() ? 'hoy' : 'proximo' }; });
+    const i = rows.findIndex(r => r.estado !== 'pasado'); if (i >= 0 && rows[i].estado === 'proximo') rows[i].estado = 'siguiente';
+    return rows;
+  } });
+
+dash.calc('proximas', { inputs:['fechas'], title:'Próximas fechas y cuándo publicar', description:'Fechas clave desde hoy, con el día de publicación (la fecha menos los días de antelación de cada una).',
+  fn: (fechas) => {
+    const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+    const D = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+    const iso = x => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`;
+    return fechas.filter(r => D(r.fecha) >= hoy).map(r => { const p = D(r.fecha); p.setDate(p.getDate() - (Number(r.antelacion) || 0)); return { clave:r.clave, publicar: iso(p < hoy ? hoy : p), fecha:r.fecha, titulo:r.titulo, tipo:r.tipo, detalle:r.detalle, idea:r.idea }; })
+      .sort((a, b) => a.publicar.localeCompare(b.publicar) || a.fecha.localeCompare(b.fecha));
+  } });
+
+dash.calc('hoy', { inputs:['proximas', 'hitos'], title:'Hoy toca publicar', description:'Publicaciones que conviene subir hoy: las de la agenda y el hito de la cuenta atrás si se cumple hoy.',
+  fn: (proximas, hitos) => {
+    const t = new Date(), iso = `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(t.getDate()).padStart(2, '0')}`;
+    const h = hitos.filter(r => r.estado === 'hoy').map(r => ({ clave:'hito-' + r.dias, publicar:iso, fecha:iso, titulo:`Faltan ${r.dias} días para el Domingo de Pasión`, tipo:'Hito', idea:`Publicación especial: «Faltan ${r.dias} días»` }));
+    return [...h, ...proximas.filter(r => r.publicar === iso)];
+  } });
+</script>
+<script>
+const sspOk = id => dash.data(id).status === 'ok';
+const sspRow = (id, i) => { const c = dash.data(id); return c.status === 'ok' && Array.isArray(c.data) ? c.data[i] : null; };
+const sspNum = n => n == null || isNaN(n) ? '—' : Number(n).toLocaleString('es-ES');
+const sspWhere = v => String(v).replace(/%/g, '%25').replace(/&/g, '%26').replace(/=/g, '%3D');
+const sspEl = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+const sspSig = () => { const h = dash.data('hitos'); return h.status === 'ok' && Array.isArray(h.data) ? h.data.find(r => r.estado === 'siguiente' || r.estado === 'hoy') : null; };
+
+dash.draw('dias', el => { const r = sspRow('cuenta', 0); el.textContent = r ? sspNum(r.dias) : '—'; });
+dash.draw('ramos', el => { const r = sspRow('cuenta', 1); el.textContent = r ? sspNum(r.dias) : '—'; });
+dash.draw('ceniza', el => { const r = sspRow('cuenta', 2); el.textContent = r ? sspNum(r.dias) : '—'; });
+dash.draw('hito', el => { const s = sspSig(); el.textContent = s ? s.dias : '—'; if (s) el.setAttribute('data-where', 'dias=' + s.dias); });
+dash.draw('hito-txt', el => { const s = sspSig(); el.textContent = s ? (s.estado === 'hoy' ? 'días: el hito se cumple hoy' : `días: próximo hito, el ${window.sspF(s.fecha, { day:'numeric', month:'long' })}`) : '—'; });
+
+// Recorrido desde la Pascua de 2026 (5 de abril) hasta el Domingo de Pasión, con la marca del Miércoles de Ceniza
+dash.draw('pista', el => {
+  const p = sspRow('cuenta', 0), c = sspRow('cuenta', 2); if (!p || !p.fecha) { el.replaceChildren(); return; }
+  const ini = window.sspD('2026-04-05'), fin = window.sspD(p.fecha), pct = x => Math.max(0, Math.min(1, (x - ini) / (fin - ini))) * 100;
+  const now = pct(new Date());
+  const fill = sspEl('i'); fill.style.width = now.toFixed(1) + '%';
+  const dot = sspEl('u'); dot.style.left = now.toFixed(1) + '%';
+  const kids = [fill, dot];
+  if (c && c.fecha) { const tick = sspEl('s'); tick.style.left = pct(window.sspD(c.fecha)).toFixed(1) + '%'; kids.push(tick); }
+  el.replaceChildren(...kids);
+  el.setAttribute('role', 'img'); el.setAttribute('aria-label', `Recorrido de la Cuaresma: ${Math.round(now)} % del camino entre la Pascua de 2026 y el Domingo de Pasión`);
+});
+
+dash.draw('hoy-sello', el => { const t = new Date(); el.replaceChildren(sspEl('i', '', t.toLocaleDateString('es-ES', { weekday:'short' }).replace('.', '')), sspEl('b', '', t.getDate()), sspEl('em', '', t.toLocaleDateString('es-ES', { month:'short' }).replace('.', ''))); });
+dash.draw('hoy', el => {
+  const h = dash.data('hoy'); if (h.status !== 'ok' || !Array.isArray(h.data)) { el.replaceChildren(sspEl('li', '', '—')); return; }
+  if (!h.data.length) { const p = dash.data('proximas'), n = p.status === 'ok' && p.data[0]; el.replaceChildren(sspEl('li', '', n ? `Hoy no hay nada previsto. Lo siguiente: ${n.idea.toLowerCase()} (${window.sspF(n.publicar, { weekday:'long', day:'numeric', month:'long' })}).` : 'Hoy no hay nada previsto.')); return; }
+  el.replaceChildren(...h.data.map(r => { const li = sspEl('li'); const d = sspEl('i', 'ssp-dot'); d.style.setProperty('--c', window.sspColor[r.tipo] || 'var(--oro)'); const t = sspEl('span'); t.append(sspEl('b', '', r.idea), sspEl('br'), sspEl('small', '', r.titulo)); li.append(d, t); return li; }));
+});
+
+dash.draw('agenda', el => {
+  const p = dash.data('proximas'); if (p.status !== 'ok' || !Array.isArray(p.data)) { el.textContent = '—'; return; }
+  const st = window.sspEstado, hoy = window.sspIso(new Date());
+  const rows = p.data.filter(r => !st.tipo || r.tipo === st.tipo), vis = rows.slice(0, st.n);
+  document.querySelectorAll('#ver-mas').forEach(b => { b.hidden = rows.length <= st.n; });
+  const lunes = s => { const d = window.sspD(s), w = (d.getDay() + 6) % 7; d.setDate(d.getDate() - w); return window.sspIso(d); };
+  const etiqueta = l => { const t = new Date(); t.setHours(0, 0, 0, 0); const est = lunes(window.sspIso(t)); const sig = window.sspD(est); sig.setDate(sig.getDate() + 7);
+    return l === est ? 'Esta semana' : l === window.sspIso(sig) ? 'La semana que viene' : 'Semana del ' + window.sspF(l, { day:'numeric', month:'long' }); };
+  const out = []; let wk = null;
+  vis.forEach(r => {
+    const l = lunes(r.publicar); if (l !== wk) { wk = l; out.push(sspEl('p', 'ssp-wk', etiqueta(l))); }
+    const it = sspEl('div', 'ssp-it'); it.style.setProperty('--c', window.sspColor[r.tipo] || 'var(--oro)');
+    it.setAttribute('data-source', 'proximas'); it.setAttribute('data-where', 'clave=' + sspWhere(r.clave));
+    const d = window.sspD(r.publicar), s = sspEl('div', 'ssp-st' + (r.publicar === hoy ? ' hoy' : ''));
+    s.append(sspEl('i', '', d.toLocaleDateString('es-ES', { weekday:'short' }).replace('.', '')), sspEl('b', '', d.getDate()), sspEl('em', '', d.toLocaleDateString('es-ES', { month:'short' }).replace('.', '')));
+    const m = sspEl('div', 'ssp-it-m'), k = sspEl('div', 'ssp-it-k', r.tipo === 'Ensayo' ? 'Cuadrilla' : r.tipo);
+    k.append(sspEl('span', '', r.fecha === r.publicar ? '· el mismo día' : `· para el ${window.sspF(r.fecha, { weekday:'long', day:'numeric', month:'short' })}`));
+    const t = sspEl('p', 'ssp-it-t', r.titulo); t.setAttribute('data-field', 'titulo');
+    m.append(k, t); if (r.detalle) m.append(sspEl('p', 'ssp-it-d', r.detalle));
+    const idea = sspEl('p', 'ssp-it-i', r.idea); idea.setAttribute('data-field', 'idea'); m.append(idea);
+    it.append(s, m); out.push(it);
+  });
+  if (!vis.length) out.push(sspEl('p', 'ssp-it-d', 'No quedan fechas de este tipo.'));
+  el.replaceChildren(...out);
+});
+document.querySelectorAll('.ssp-chip').forEach(b => b.addEventListener('click', () => {
+  window.sspEstado.tipo = b.dataset.tipo; window.sspEstado.n = 12;
+  document.querySelectorAll('.ssp-chip').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  dash.draw('agenda');
+}));
+document.querySelectorAll('#ver-mas').forEach(b => b.addEventListener('click', () => { window.sspEstado.n += 20; dash.draw('agenda'); }));
+
+dash.draw('cal-mes', el => { el.textContent = new Date().toLocaleDateString('es-ES', { month:'long', year:'numeric' }); });
+dash.draw('cal', el => {
+  const f = dash.data('fechas'); const t = new Date(); t.setHours(0, 0, 0, 0);
+  const y = t.getFullYear(), m = t.getMonth(), first = new Date(y, m, 1), n = new Date(y, m + 1, 0).getDate(), pad = (first.getDay() + 6) % 7;
+  const por = {}; if (f.status === 'ok') f.data.forEach(r => { const d = window.sspD(r.fecha); if (d.getFullYear() === y && d.getMonth() === m) (por[d.getDate()] = por[d.getDate()] || new Set()).add(r.tipo); });
+  const kids = ['L', 'M', 'X', 'J', 'V', 'S', 'D'].map(x => sspEl('i', '', x));
+  for (let i = 0; i < pad; i++) kids.push(sspEl('div'));
+  for (let d = 1; d <= n; d++) {
+    const c = sspEl('div', d === t.getDate() ? 'h' : d < t.getDate() ? 'p' : '', d);
+    if (por[d]) { const u = sspEl('u'); [...por[d]].slice(0, 3).forEach(tp => { const s = sspEl('s'); s.style.setProperty('--c', window.sspColor[tp] || 'var(--oro)'); u.append(s); }); c.append(u); c.title = [...por[d]].join(', '); }
+    kids.push(c);
+  }
+  el.replaceChildren(...kids);
+});
+
+dash.draw('hitos', el => {
+  const h = dash.data('hitos'); if (h.status !== 'ok' || !Array.isArray(h.data)) { el.replaceChildren(sspEl('li', '', '—')); return; }
+  const i = h.data.findIndex(r => r.estado !== 'pasado'), vis = h.data.slice(Math.max(0, i - 1), Math.max(0, i - 1) + 8);
+  el.replaceChildren(...vis.map(r => {
+    const li = sspEl('li', r.estado === 'pasado' ? 'past' : r.estado === 'siguiente' || r.estado === 'hoy' ? 'next' : '');
+    li.setAttribute('data-source', 'hitos'); li.setAttribute('data-where', 'dias=' + r.dias);
+    const b = sspEl('b', '', r.dias); b.setAttribute('data-field', 'dias'); b.append(sspEl('small', '', 'días'));
+    li.append(b, sspEl('span', '', r.estado === 'hoy' ? 'Hoy' : window.sspF(r.fecha, { weekday:'short', day:'numeric', month:'short' }))); return li;
+  }));
+});
+
+</script>
+<script>
+// Periodo de las redes: fechas calculadas antes de la primera consulta
+window.sspPeriodo = d => { const h = new Date(), x = new Date(); x.setDate(h.getDate() - d + 1); const f = y => `${y.getFullYear()}-${String(y.getMonth() + 1).padStart(2, '0')}-${String(y.getDate()).padStart(2, '0')}`; return { desde: f(x), hasta: f(h) }; };
+dash.setParams(window.sspPeriodo(30));
+
+// Metricool devuelve filas [valor, valor, …, AAAAMMDD]; aquí se ponen nombres y números
+['ig', 'fb', 'tk'].forEach(id => dash.loader(id, { description:'Convierte cada fila de Metricool (valores en el orden de las métricas pedidas y la fecha al final) en un día con columnas con nombre.',
+  fn: ({ answer, args }) => {
+    const N = { IGEV01:'seguidores', IGEV43:'ganados', IGEV44:'perdidos', IGEV05:'vistas', IGEV06:'alcance', IGEV37:'publicaciones', IGEV16:'historias', IGEV38:'interacciones',
+      FBEV17:'seguidores', FBEV47:'ganados', FBEV48:'perdidos', FBEV49:'vistas', FBEV03:'visitas', FBEV33:'publicaciones', FBEV34:'interacciones',
+      TKEV07:'seguidores', TKEV16:'ganados', TKEV17:'perdidos', TKEV12:'vistas', TKEV11:'alcance', TKEV01:'videos', TKEV06:'interacciones' };
+    if (answer && answer.error) throw new Error(typeof answer.error === 'string' ? answer.error : (answer.error.message || 'Error de Metricool'));
+    const cols = (args.metrics || []).map(m => N[m] || m), rows = (answer && answer.rows) || [];
+    const data = rows.map(r => { const o = {}; const f = String(r[r.length - 1]); o.fecha = `${f.slice(0, 4)}-${f.slice(4, 6)}-${f.slice(6, 8)}`;
+      cols.forEach((c, i) => { const v = r[i]; o[c] = v === null || v === undefined || v === '' ? null : Number(v); }); return o; })
+      .sort((a, b) => a.fecha.localeCompare(b.fecha));
+    return { data, columns: ['fecha', ...cols] };
+  } }));
+
+['ig', 'fb', 'tk'].forEach(id => dash.calc(id + '-res', { inputs:[id], title:'Resumen del periodo', description:'Seguidores: el último dato del periodo y su variación desde el primero. El resto: la suma de todos los días.',
+  fn: (dias) => {
+    const con = c => dias.filter(d => d[c] != null), suma = c => con(c).reduce((s, d) => s + d[c], 0);
+    const seg = con('seguidores'), o = { seguidores: seg.length ? seg[seg.length - 1].seguidores : null, variacion: seg.length > 1 ? seg[seg.length - 1].seguidores - seg[0].seguidores : null };
+    ['ganados', 'perdidos', 'vistas', 'alcance', 'publicaciones', 'historias', 'interacciones', 'visitas', 'videos'].forEach(c => { o[c] = con(c).length ? suma(c) : null; });
+    o.dias = dias.length;
+    return [o];
+  } }));
+
+dash.calc('web-res', { inputs:['web'], title:'Resumen de visitas de la web', description:'Totales del contador (la última fila del archivo) y las visitas de hoy.',
+  fn: (filas) => {
+    const tot = filas.find(r => /total/.test(r.periodo || '')) || {}, dias = filas.filter(r => !/total/.test(r.periodo || ''));
+    const t = new Date(), iso = `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(t.getDate()).padStart(2, '0')}`, hoy = dias.find(r => r.fecha === iso);
+    return [{ visitas: tot.visitas ?? null, visitantes: tot.nuevos ?? null, app: tot.app ?? null, navegador: tot.navegador ?? null, hoy: hoy ? hoy.visitas : null }];
+  } });
+</script>
+
+<script>
+// Secciones como una app: una visible; el enlace recuerda cuál
+const sspSecs = ['fechas', 'web', 'ig', 'fb', 'tk'];
+const sspAbre = s => {
+  if (!sspSecs.includes(s)) s = 'fechas';
+  sspSecs.forEach(x => document.querySelectorAll('#' + x).forEach(e => { e.hidden = x !== s; }));
+  document.querySelectorAll('.ssp-tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.sec === s)));
+  dash.setLink(s);
+};
+document.querySelectorAll('.ssp-tab').forEach(b => b.addEventListener('click', () => sspAbre(b.dataset.sec)));
+sspAbre((location.hash || '').slice(1));
+document.querySelectorAll('[data-periodo]').forEach(s => s.addEventListener('change', () => {
+  const v = s.value; document.querySelectorAll('[data-periodo]').forEach(o => { o.value = v; });
+  dash.setParams(window.sspPeriodo(Number(v) || 30));
+}));
+
+const sspN = n => n == null || isNaN(n) ? '—' : Number(n).toLocaleString('es-ES');
+const sspRes = id => { const r = dash.data(id); return r.status === 'ok' && Array.isArray(r.data) && r.data[0] ? r.data[0] : null; };
+[['ig', ['seguidores', 'ganados', 'alcance', 'vistas', 'interacciones', 'publicaciones']], ['fb', ['seguidores', 'ganados', 'vistas', 'visitas', 'interacciones', 'publicaciones']], ['tk', ['seguidores', 'ganados', 'vistas', 'alcance', 'interacciones', 'videos']]].forEach(([id, fs]) => {
+  fs.forEach(f => dash.draw(`k-${id}-${f}`, el => { const r = sspRes(id + '-res'); el.textContent = r ? sspN(r[f]) : '—'; }));
+  dash.draw(`s-${id}-seguidores`, el => { const r = sspRes(id + '-res'); const v = r && r.variacion;
+    el.className = v > 0 ? 'up' : v < 0 ? 'down' : ''; el.textContent = v == null ? 'último dato del periodo' : `${v > 0 ? '+' : ''}${sspN(v)} en el periodo`; });
+  dash.draw('aviso-' + id, el => { const d = dash.data(id), r = sspRes(id + '-res'), vacio = d.status === 'ok' && (!r || (r.seguidores == null || r.seguidores === 0) && !r.vistas);
+    document.querySelectorAll('#aviso-' + id + '-t').forEach(p => { p.hidden = d.status === 'ok' && !vacio; }); });
+});
+dash.draw('ig-stories', el => { const r = sspRes('ig-res'); el.textContent = r ? sspN(r.historias) : '—'; });
+
+// Gráficos: línea para seguidores, barras para el resto, con tooltip dentro del gráfico
+const sspGrafico = (el, filas, campo, tipo, color) => {
+  const pts = filas.filter(d => d[campo] != null);
+  if (pts.length < 2) { el.replaceChildren(Object.assign(document.createElement('div'), { className:'vacio', textContent: pts.length ? 'Hace falta más de un día de datos para dibujar el gráfico.' : 'Todavía no hay datos en este periodo.' })); return; }
+  const W = Math.max(260, el.clientWidth || 300), H = 190, m = { t:10, r:10, b:24, l:10 };
+  const x = d3.scaleUtc().domain(d3.extent(pts, d => new Date(d.fecha + 'T12:00:00Z'))).range([m.l, W - m.r]);
+  const ext = d3.extent(pts, d => d[campo]), y = d3.scaleLinear().domain(tipo === 'bar' ? [0, ext[1] || 1] : [ext[0], ext[1] === ext[0] ? ext[0] + 1 : ext[1]]).nice(4).range([H - m.b, m.t]);
+  const svg = d3.create('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', `${campo} por día`);
+  const ticks = y.ticks(4);
+  const tl = svg.append('g'); ticks.forEach(t => tl.append('text').attr('x', m.l).attr('y', y(t) - 4).text(sspN(t)));
+  const wl = Math.max(0, ...tl.selectAll('text').nodes().map(n => n.getComputedTextLength ? n.getComputedTextLength() : 0));
+  x.range([m.l + wl + 8, W - m.r]);
+  svg.append('g').attr('class', 'grid').selectAll('line').data(ticks).join('line').attr('x1', x.range()[0]).attr('x2', W - m.r).attr('y1', d => y(d)).attr('y2', d => y(d));
+  tl.raise(); tl.selectAll('text').attr('x', m.l);
+  const fmt = d3.utcFormat('%d/%m');
+  svg.append('g').attr('transform', `translate(0,${H - m.b + 16})`).selectAll('text').data(x.ticks(Math.min(5, pts.length))).join('text').attr('x', d => x(d)).attr('text-anchor', 'middle').text(d => fmt(d));
+  if (tipo === 'bar') {
+    const bw = Math.max(2, (x.range()[1] - x.range()[0]) / pts.length * .7);
+    svg.append('g').selectAll('rect').data(pts).join('rect').attr('x', d => x(new Date(d.fecha + 'T12:00:00Z')) - bw / 2).attr('width', bw).attr('y', d => y(d[campo])).attr('height', d => Math.max(0, y(0) - y(d[campo]))).attr('rx', 2).style('fill', color);
+  } else {
+    svg.append('path').datum(pts).attr('d', d3.area().x(d => x(new Date(d.fecha + 'T12:00:00Z'))).y0(H - m.b).y1(d => y(d[campo]))).style('fill', color).style('opacity', .12);
+    svg.append('path').datum(pts).attr('d', d3.line().x(d => x(new Date(d.fecha + 'T12:00:00Z'))).y(d => y(d[campo]))).style('fill', 'none').style('stroke', color).style('stroke-width', 2);
+    const u = pts[pts.length - 1]; svg.append('circle').attr('cx', x(new Date(u.fecha + 'T12:00:00Z'))).attr('cy', y(u[campo])).attr('r', 4).style('fill', color);
+  }
+  const tip = document.createElement('div'); tip.className = 'ssp-tip'; tip.hidden = true;
+  svg.on('pointermove', ev => { const [px] = d3.pointer(ev); const fecha = x.invert(px); let best = pts[0]; pts.forEach(d => { if (Math.abs(new Date(d.fecha + 'T12:00:00Z') - fecha) < Math.abs(new Date(best.fecha + 'T12:00:00Z') - fecha)) best = d; });
+    tip.hidden = false; tip.replaceChildren(document.createTextNode(sspN(best[campo])), Object.assign(document.createElement('small'), { textContent: new Date(best.fecha + 'T12:00:00Z').toLocaleDateString('es-ES', { day:'numeric', month:'long', timeZone:'UTC' }) }));
+    tip.style.left = (x(new Date(best.fecha + 'T12:00:00Z')) / W * 100) + '%'; tip.style.top = (y(best[campo]) / H * el.clientHeight) + 'px'; })
+    .on('pointerleave', () => { tip.hidden = true; });
+  el.replaceChildren(svg.node(), tip);
+};
+const sspCol = { ig:'#E1306C', fb:'#4C8DF6', tk:'#25F4EE' };
+['ig', 'fb', 'tk'].forEach(id => ['seguidores', 'vistas'].forEach(campo => dash.draw(`g-${id}-${campo}`, el => {
+  const d = dash.data(id);
+  if (d.status === 'error') { el.replaceChildren(Object.assign(document.createElement('div'), { className:'vacio', textContent:'No se pudo cargar.' })); return; }
+  if (d.status !== 'ok' || !Array.isArray(d.data)) { if (!el.firstChild) el.textContent = '—'; return; }
+  sspGrafico(el, d.data, campo, campo === 'seguidores' ? 'line' : 'bar', campo === 'seguidores' ? '#E3C66B' : sspCol[id]);
+})));
+
+// Web
+['visitas', 'visitantes', 'hoy', 'app'].forEach(f => dash.draw('w-' + f, el => { const r = sspRes('web-res'); el.textContent = r ? sspN(r[f]) : '—'; }));
+dash.draw('w-app-s', el => { const r = sspRes('web-res'); el.textContent = r && r.navegador != null ? `${sspN(r.navegador)} desde el navegador` : 'aperturas de la app'; });
+dash.draw('g-web', el => { const d = dash.data('web'); if (d.status !== 'ok' || !Array.isArray(d.data)) { if (!el.firstChild) el.textContent = '—'; return; }
+  sspGrafico(el, d.data.filter(r => !/total/.test(r.periodo || '')), 'visitas', 'bar', '#E3C66B'); });
+</script>
+<script>
+// Carga de datos
+(async () => {
+  const j = u => fetch(u, { cache:'no-cache' }).then(r => r.json());
+  try { dash._set('fechas', { status:'ok', data: await j('data/fechas.json') }); } catch (e) { dash._set('fechas', { status:'error', data: [] }); }
+  try {
+    const r = await j('data/redes.json'); dash._redes(r);
+    document.querySelectorAll('[data-red-act]').forEach(s => { s.textContent = r.actualizado ? `Copia de Metricool del ${new Date(r.actualizado).toLocaleDateString('es-ES', { day:'numeric', month:'long', year:'numeric' })}.` : 'Copia de Metricool.'; });
+  } catch (e) { ['ig', 'fb', 'tk'].forEach(id => dash._set(id, { status:'error', data: [] })); }
+  dash._recalcular();
+  // Visitas de la web, en directo desde el contador (mismas claves que usa la web)
+  const API = 'https://abacus.jasoncameron.dev/get/ssciudadreal/';
+  const leer = k => fetch(API + k).then(r => r.ok ? r.json() : { value: 0 }).then(d => Number(d.value) > 0 ? Number(d.value) : 0).catch(() => 0);
+  const ini = new Date(2026, 10, 9), hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+  const dias = []; for (let d = new Date(Math.max(ini, hoy - 89 * 864e5)); d <= hoy; d.setDate(d.getDate() + 1)) dias.push(new Date(d));
+  const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const [tot, vis, app, nav, ...porDia] = await Promise.all([leer('visitas'), leer('visitantes'), leer('app'), leer('navegador'), ...dias.map(d => leer('dia-' + iso(d).replace(/-/g, '')))]);
+  const filas = dias.map((d, i) => ({ fecha: iso(d), periodo: d.toLocaleDateString('es-ES'), visitas: porDia[i] }));
+  filas.push({ fecha: iso(hoy), periodo:'total desde el 9 de noviembre', visitas: tot, nuevos: vis, app, navegador: nav });
+  dash._set('web', { status:'ok', data: filas });
+  dash._recalcular();
+})();
+window.scrollTo(0, 0); window.addEventListener('load', () => window.scrollTo(0, 0));
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body></html>
