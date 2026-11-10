@@ -21,6 +21,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;-w
 .ssp-bar{padding-top:calc(12px + env(safe-area-inset-top,0px))}
 .ssp-in{padding-left:max(clamp(16px,4vw,44px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,4vw,44px),env(safe-area-inset-right,0px))}
 [hidden]{display:none!important}
+.ssp.cargando [data-draw]{visibility:hidden}
 </style>
 </head><body>
 <style>
@@ -55,6 +56,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;-w
 .ssp-track-bar{position:relative;height:3px;border-radius:2px;background:rgba(246,242,234,.12)}
 .ssp-track-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:2px;background:linear-gradient(90deg,var(--oro2),var(--oro))}
 .ssp-track-bar u{position:absolute;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:var(--oro);box-shadow:0 0 0 4px rgba(227,198,107,.22)}
+.ssp-track-bar b{position:absolute;top:-24px;transform:translateX(-50%);font:700 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--crema3);white-space:nowrap}
+.ssp-track{margin-top:36px!important}
 .ssp-track-bar s{position:absolute;top:-4px;width:1px;height:11px;background:var(--crema3)}
 .ssp-track-lb{display:flex;justify-content:space-between;margin-top:9px;font:600 11px/1.2 var(--sans);letter-spacing:.06em;color:var(--crema3);text-transform:uppercase}
 .ssp-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:620px;border-top:1px solid var(--linea)}
@@ -181,7 +184,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;-w
 .ssp-lock .ssp-sello{margin:4px}
 </style>
 
-<div class="ssp">
+<div class="ssp cargando">
   <nav class="ssp-bar" aria-label="Secciones">
     <span class="ssp-sello" style="--s:32px" role="img" aria-label="SS Ciudad Real"></span>
     <div class="ssp-tabs" role="tablist">
@@ -206,7 +209,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;-w
       <p class="ssp-para">para el Domingo de Pasión<em>Domingo, 14 de marzo de 2027 · abre nuestra Semana Santa</em></p>
       <div class="ssp-track" id="recorrido">
         <div class="ssp-track-bar" data-draw="pista" data-source="cuenta"></div>
-        <div class="ssp-track-lb"><span>Pascua 2026</span><span>Ceniza</span><span>Domingo de Pasión</span></div>
+        <div class="ssp-track-lb"><span>Pascua 2026</span><span>Domingo de Pasión</span></div>
       </div>
     </div>
     <div class="ssp-stats" id="cifras">
@@ -326,7 +329,7 @@ window.dash = (() => {
     params: () => ({ ...params }),
     setParams: p => { params = { ...params, ...p }; filtrarRedes(); recalcular(); },
     resetParams: () => {},
-    setLink: s => { try { history.replaceState(null, '', '#' + s); } catch (e) {} },
+    setLink: s => { try { history.replaceState(null, '', '#ir-' + s); } catch (e) {} },
     refresh: () => {},
     colors: ['#E3C66B'],
     _set: (id, v) => { store[id] = v; },
@@ -414,7 +417,7 @@ dash.draw('pista', el => {
   const fill = sspEl('i'); fill.style.width = now.toFixed(1) + '%';
   const dot = sspEl('u'); dot.style.left = now.toFixed(1) + '%';
   const kids = [fill, dot];
-  if (c && c.fecha) { const tick = sspEl('s'); tick.style.left = pct(window.sspD(c.fecha)).toFixed(1) + '%'; kids.push(tick); }
+  if (c && c.fecha) { const x = pct(window.sspD(c.fecha)).toFixed(1) + '%', tick = sspEl('s'), lb = sspEl('b', '', 'Ceniza'); tick.style.left = x; lb.style.left = x; kids.push(tick, lb); }
   el.replaceChildren(...kids);
   el.setAttribute('role', 'img'); el.setAttribute('aria-label', `Recorrido de la Cuaresma: ${Math.round(now)} % del camino entre la Pascua de 2026 y el Domingo de Pasión`);
 });
@@ -531,7 +534,7 @@ const sspAbre = s => {
   dash.setLink(s);
 };
 document.querySelectorAll('.ssp-tab').forEach(b => b.addEventListener('click', () => sspAbre(b.dataset.sec)));
-sspAbre((location.hash || '').slice(1));
+sspAbre((location.hash || '').replace(/^#(ir-)?/, ''));
 document.querySelectorAll('[data-periodo]').forEach(s => s.addEventListener('change', () => {
   const v = s.value; document.querySelectorAll('[data-periodo]').forEach(o => { o.value = v; });
   dash.setParams(window.sspPeriodo(Number(v) || 30));
@@ -543,7 +546,7 @@ const sspRes = id => { const r = dash.data(id); return r.status === 'ok' && Arra
   fs.forEach(f => dash.draw(`k-${id}-${f}`, el => { const r = sspRes(id + '-res'); el.textContent = r ? sspN(r[f]) : '—'; }));
   dash.draw(`s-${id}-seguidores`, el => { const r = sspRes(id + '-res'); const v = r && r.variacion;
     el.className = v > 0 ? 'up' : v < 0 ? 'down' : ''; el.textContent = v == null ? 'último dato del periodo' : `${v > 0 ? '+' : ''}${sspN(v)} en el periodo`; });
-  dash.draw('aviso-' + id, el => { const d = dash.data(id), r = sspRes(id + '-res'), vacio = d.status === 'ok' && (!r || (r.seguidores == null || r.seguidores === 0) && !r.vistas);
+  dash.draw('aviso-' + id, el => { const d = dash.data(id), r = sspRes(id + '-res'), vacio = d.status === 'ok' && (!r || !r.seguidores);
     document.querySelectorAll('#aviso-' + id + '-t').forEach(p => { p.hidden = d.status === 'ok' && !vacio; }); });
 });
 dash.draw('ig-stories', el => { const r = sspRes('ig-res'); el.textContent = r ? sspN(r.historias) : '—'; });
@@ -603,6 +606,7 @@ dash.draw('g-web', el => { const d = dash.data('web'); if (d.status !== 'ok' || 
     document.querySelectorAll('[data-red-act]').forEach(s => { s.textContent = r.actualizado ? `Copia de Metricool del ${new Date(r.actualizado).toLocaleDateString('es-ES', { day:'numeric', month:'long', year:'numeric' })}.` : 'Copia de Metricool.'; });
   } catch (e) { ['ig', 'fb', 'tk'].forEach(id => dash._set(id, { status:'error', data: [] })); }
   dash._recalcular();
+  document.querySelectorAll('.ssp').forEach(e => e.classList.remove('cargando'));
   // Visitas de la web, en directo desde el contador (mismas claves que usa la web)
   const API = 'https://abacus.jasoncameron.dev/get/ssciudadreal/';
   const leer = k => fetch(API + k).then(r => r.ok ? r.json() : { value: 0 }).then(d => Number(d.value) > 0 ? Number(d.value) : 0).catch(() => 0);

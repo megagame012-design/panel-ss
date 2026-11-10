@@ -1,5 +1,5 @@
 // Panel SS Ciudad Real: red primero y copia de respaldo para abrir sin conexión
-const C = 'panel-ss-v1';
+const C = 'panel-ss-v2';
 self.addEventListener('install', e => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', e => {
